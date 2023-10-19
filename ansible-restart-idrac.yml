@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+  - name: Log in to server
+    command: ssh {{ ansible_ssh_user }}@{{ ansible_host }}
+    register: ssh_result
+
+  - name: Restart iDRAC
+    command: /opt/dell/srvadmin/iSM/bin/Invoke-iDRACHardReset -f
+
+  - name: Wait for iDRAC to come back online
+    pause:
+      minutes: 5
+
+  - name: Log out of server
+    command: exit
+    register: ssh_result
