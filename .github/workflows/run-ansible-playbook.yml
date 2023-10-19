@@ -21,7 +21,7 @@ jobs:
         run: pip install ansible
 
       - name: Lint Ansible playbooks
-        run: ansible-playbook --syntax-check -v ./playbooks/
+        run: ansible-playbook --syntax-check -v ./ansible-restart-idrac.yml
 
     #  - name: Run Ansible playbooks
      #   run: ansible-playbook -v ./playbooks/
